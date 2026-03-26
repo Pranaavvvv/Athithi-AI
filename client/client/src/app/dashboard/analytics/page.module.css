@@ -1,0 +1,60 @@
+.analyticsPage { animation: fadeIn 0.4s ease; }
+
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-8); }
+.header h1 { font-family: var(--font-headline); font-size: 2rem; margin-bottom: var(--space-1); }
+.subtitle { font-size: 0.9rem; color: var(--on-surface-variant); }
+
+.selectInput { padding: var(--space-2) var(--space-4); background: var(--surface-container-low); border: 1px solid var(--outline-variant); border-radius: var(--radius-md); font-family: var(--font-body); font-size: 0.9rem; color: var(--on-background); outline: none; }
+
+.metricsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); margin-bottom: var(--space-8); }
+.metricCard { background: var(--surface-container-lowest); padding: var(--space-5); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); display: flex; flex-direction: column; }
+.metricLabel { font-size: 0.8rem; color: var(--outline); font-weight: 600; text-transform: uppercase; margin-bottom: var(--space-2); }
+.metricValueLine { display: flex; align-items: baseline; justify-content: space-between; }
+.metricValue { font-family: var(--font-data); font-size: 1.8rem; font-weight: 700; color: var(--on-background); }
+
+.trendUp, .trendDown { font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: var(--radius-full); }
+.trendUp { background: rgba(31,100,46,0.1); color: var(--primary); }
+.trendDown { background: rgba(186,26,26,0.1); color: var(--error); }
+
+.chartsGrid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-5); margin-bottom: var(--space-8); }
+.chartCard { background: var(--surface-container-lowest); padding: var(--space-6); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); }
+.chartCard h3 { font-family: var(--font-headline); font-size: 1.1rem; margin-bottom: var(--space-5); }
+
+.chartArea { min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; }
+.lineChart { width: 100%; height: 200px; position: relative; display: flex; flex-direction: column; }
+.svgChart { width: 100%; height: 100%; overflow: visible; }
+.chartLegend { display: flex; gap: var(--space-4); justify-content: center; margin-top: var(--space-4); font-size: 0.8rem; color: var(--on-surface-variant); }
+.chartLegend span { display: flex; align-items: center; gap: 4px; }
+.dotPrimary { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
+.dotVariant { width: 8px; height: 8px; border-radius: 50%; background: var(--outline-variant); }
+
+.doughnutArea { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+.doughnutChart { width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(var(--primary) 0% 45%, var(--primary-container) 45% 75%, var(--tertiary-fixed) 75% 90%, var(--surface-container-highest) 90% 100%); position: relative; display: flex; align-items: center; justify-content: center; }
+.doughnutChart::after { content: ''; width: 100px; height: 100px; background: var(--surface-container-lowest); border-radius: 50%; position: absolute; }
+
+.doughnutLegend { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
+.legendItem { display: flex; align-items: center; gap: var(--space-2); font-size: 0.8rem; color: var(--on-surface-variant); justify-content: space-between; border-bottom: 1px solid var(--surface-container-low); padding-bottom: 4px; }
+.legendItem > * { display: flex; align-items: center; gap: var(--space-2); }
+.dotColor1 { width: 10px; height: 10px; border-radius: 2px; background: var(--primary); }
+.dotColor2 { width: 10px; height: 10px; border-radius: 2px; background: var(--primary-container); }
+.dotColor3 { width: 10px; height: 10px; border-radius: 2px; background: var(--tertiary-fixed); }
+.dotColor4 { width: 10px; height: 10px; border-radius: 2px; background: var(--surface-container-highest); }
+
+.tableCard { background: var(--surface-container-lowest); padding: var(--space-6); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); overflow-x: auto; }
+.tableCard h3 { font-family: var(--font-headline); font-size: 1.1rem; margin-bottom: var(--space-5); }
+.dataTable { width: 100%; border-collapse: collapse; text-align: left; }
+.dataTable th { padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--surface-container-high); font-size: 0.8rem; font-weight: 600; color: var(--outline); text-transform: uppercase; }
+.dataTable td { padding: var(--space-4); border-bottom: 1px solid var(--surface-container-high); font-size: 0.9rem; color: var(--on-background); }
+.dataTable td:nth-child(2), .dataTable td:nth-child(3), .dataTable td:nth-child(4) { font-family: var(--font-data); }
+
+.statusOptimal { background: var(--primary-fixed); color: var(--primary-fixed-variant); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+.statusUnder { background: #FFF3E0; color: #E65100; padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+
+@media (max-width: 1024px) {
+  .metricsGrid { grid-template-columns: repeat(2, 1fr); }
+  .chartsGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+  .metricsGrid { grid-template-columns: 1fr; }
+}

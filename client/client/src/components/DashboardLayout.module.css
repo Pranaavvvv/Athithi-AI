@@ -1,0 +1,29 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--surface);
+}
+
+.mainContent {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  min-height: 100vh;
+  padding: var(--space-8);
+  padding-bottom: var(--space-16);
+  background: var(--surface-container-low);
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .mainContent {
+    padding: var(--space-5);
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+    padding: var(--space-4);
+    padding-bottom: 100px;
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test/auth.test.js",
+    "test:auth": "node test/auth.test.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.13.6",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "form-data": "^4.0.5",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.1.10",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.16.0",
+    "qrcode": "^1.5.4",
+    "uuid": "^13.0.0",
+    "ws": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.20.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/*",
+      ".git/*",
+      "*.log",
+      "sessions/*",
+      "*.json"
+    ]
+  }
+}

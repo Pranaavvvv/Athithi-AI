@@ -1,0 +1,425 @@
+.authPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* ── Brand Panel ── */
+.brandPanel {
+  background: linear-gradient(165deg, #0a3d10, var(--primary), var(--primary-container));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+
+.brandContent {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 440px;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-16);
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.logoIcon span { font-size: 22px; }
+
+.logoText {
+  font-family: var(--font-headline);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.brandHero h1 {
+  font-family: var(--font-headline);
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: var(--space-6);
+}
+
+.brandHero h1 span {
+  color: var(--mint-blush);
+}
+
+.brandHero p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: var(--space-10);
+}
+
+.brandStats {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.brandStat {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-xl);
+  min-width: 140px;
+}
+
+.brandStatNum {
+  font-family: var(--font-data);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.brandStatLabel {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: var(--space-1);
+}
+
+.botanicalDecor { position: absolute; inset: 0; pointer-events: none; }
+
+.leaf1, .leaf2, .leaf3 {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.08;
+  background: white;
+}
+
+.leaf1 { width: 400px; height: 400px; top: -100px; right: -100px; }
+.leaf2 { width: 300px; height: 300px; bottom: -50px; left: -80px; }
+.leaf3 { width: 200px; height: 200px; top: 40%; right: 20%; }
+
+/* ── Form Panel ── */
+.formPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  background: var(--surface);
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 420px;
+}
+
+.formContainer h2 {
+  font-family: var(--font-headline);
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+}
+
+.formSubtitle {
+  color: var(--on-surface-variant);
+  margin-bottom: var(--space-8);
+  font-size: 0.9rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inputGroup label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--on-background);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-container-highest);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--mint-blush);
+  background: var(--surface-container-lowest);
+  box-shadow: 0 0 0 3px rgba(200, 230, 201, 0.3);
+}
+
+.inputWrapper .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--outline);
+}
+
+.inputWrapper input {
+  flex: 1;
+  background: transparent;
+  color: var(--on-background);
+  font-size: 0.9rem;
+}
+
+.inputWrapper input::placeholder { color: var(--outline-variant); }
+
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8rem;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.forgotLink {
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.forgotLink:hover { color: var(--primary-container); }
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: var(--on-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(31, 100, 46, 0.2);
+}
+
+.submitBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(31, 100, 46, 0.3);
+  color: white;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--outline-variant);
+}
+
+.divider span {
+  font-size: 0.75rem;
+  color: var(--outline);
+  white-space: nowrap;
+}
+
+.socialBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--surface-container-lowest);
+  border: 1.5px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--on-background);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.socialBtn:hover {
+  background: var(--surface-container-low);
+  border-color: var(--primary-fixed-dim);
+}
+
+.socialBtn .material-symbols-outlined { font-size: 18px; }
+
+.toggleMode {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--on-surface-variant);
+  margin-top: var(--space-6);
+}
+
+.toggleMode button {
+  color: var(--primary);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+  font-size: 0.75rem;
+  color: var(--outline);
+}
+
+.footerLinks a {
+  color: var(--outline);
+  text-decoration: none;
+}
+
+.footerLinks a:hover { color: var(--primary); }
+
+/* ── Modal ── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  animation: scaleIn 0.3s ease;
+  box-shadow: var(--shadow-modal);
+}
+
+.modal h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-2);
+}
+
+.modal > p {
+  font-size: 0.9rem;
+  color: var(--on-surface-variant);
+  margin-bottom: var(--space-6);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.modalClose {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--outline);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modalClose:hover {
+  background: var(--surface-container-high);
+  color: var(--on-background);
+}
+
+.modalSuccess {
+  text-align: center;
+  padding: var(--space-4) 0;
+}
+
+.successIcon {
+  margin-bottom: var(--space-4);
+}
+
+.successIcon .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--primary);
+}
+
+.modalSuccess h4 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-2);
+}
+
+.modalSuccess p {
+  color: var(--on-surface-variant);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .authPage { grid-template-columns: 1fr; }
+  .brandPanel { display: none; }
+  .formPanel { padding: var(--space-6); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

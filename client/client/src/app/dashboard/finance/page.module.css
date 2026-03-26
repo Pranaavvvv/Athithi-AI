@@ -1,0 +1,63 @@
+.financePage { animation: fadeIn 0.4s ease; }
+
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-8); }
+.header h1 { font-family: var(--font-headline); font-size: 2rem; margin-bottom: var(--space-1); }
+.subtitle { font-size: 0.9rem; color: var(--on-surface-variant); }
+
+.btnPrimary {
+  display: flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: white; border-radius: var(--radius-lg); font-weight: 600; font-size: 0.875rem; border: none; cursor: pointer;
+}
+
+.metricsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-bottom: var(--space-8); }
+
+.metricCard {
+  background: var(--surface-container-lowest); padding: var(--space-6); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+
+.metricLabel { font-size: 0.85rem; color: var(--outline); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2); }
+.metricValue { font-family: var(--font-data); font-size: 2rem; font-weight: 700; color: var(--on-background); margin-bottom: var(--space-4); }
+
+.progressBar { height: 4px; width: 100%; border-radius: var(--radius-full); position: absolute; bottom: 0; left: 0; }
+.bgPrimary { background: var(--primary); width: 100%; }
+.bgSecondary { background: var(--secondary); width: 78%; }
+.bgWarn { background: #e6a700; width: 22%; }
+
+.mainGrid { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-5); }
+.sideCol { display: flex; flex-direction: column; gap: var(--space-5); }
+
+.card { background: var(--surface-container-lowest); padding: var(--space-6); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); }
+.cardHeader h3 { font-family: var(--font-headline); font-size: 1.25rem; display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-5); }
+
+.trackingList { display: flex; flex-direction: column; }
+.trackRow { display: flex; justify-content: space-between; align-items: center; padding: var(--space-4) 0; border-bottom: 1px solid var(--outline-variant); }
+.trackRow:last-child { border-bottom: none; }
+.trackInfo h4 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+.trackInfo span { font-size: 0.8rem; color: var(--outline); }
+
+.badgeSuccess { background: var(--primary-fixed); color: var(--primary-fixed-variant); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+.badgeWarn { background: #FFF3E0; color: #E65100; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+.badgePending { background: var(--surface-container-high); color: var(--outline); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+
+.timeline { display: flex; flex-direction: column; margin-left: 8px; }
+.timelineNode { display: flex; gap: var(--space-4); padding-bottom: var(--space-6); position: relative; }
+.timelineNode:not(:last-child)::before { content:''; position: absolute; left: 5px; top: 12px; bottom: 0; width: 2px; background: var(--outline-variant); }
+.nodeDot { width: 12px; height: 12px; border-radius: 50%; background: var(--outline-variant); z-index: 2; margin-top: 4px; }
+.nodeComplete .nodeDot { background: var(--primary); }
+.nodeComplete::before { background: var(--primary); }
+.nodeActive .nodeDot { background: var(--primary); box-shadow: 0 0 0 4px var(--primary-fixed); }
+
+.nodeContent strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+.nodeContent span { font-size: 0.8rem; color: var(--outline); }
+
+.reminderList { display: flex; flex-direction: column; gap: var(--space-4); }
+.reminderItem { padding: var(--space-4); background: var(--surface-container-low); border-radius: var(--radius-lg); border-left: 3px solid var(--primary); }
+.remDate { font-family: var(--font-data); font-size: 0.75rem; color: var(--primary); font-weight: 600; display: block; margin-bottom: var(--space-1); }
+.reminderItem strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+.reminderItem p { font-size: 0.85rem; color: var(--on-surface-variant); font-style: italic; }
+
+@media (max-width: 1024px) {
+  .mainGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .metricsGrid { grid-template-columns: 1fr; }
+}

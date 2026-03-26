@@ -1,0 +1,12 @@
+fastapi==0.115.0
+uvicorn==0.34.0
+facenet-pytorch==2.6.0
+torch>=2.0.0
+torchvision>=0.15.0
+Pillow>=11.0.0
+python-multipart==0.0.17
+numpy>=1.24.0
+boto3
+python-dotenv
+asyncpg>=0.29.0
+pgvector>=0.3.0

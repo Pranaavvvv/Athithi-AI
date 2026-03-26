@@ -1,0 +1,199 @@
+# Installment Support & Customer States - Agents API Integration Plan
+
+## Overview
+This document outlines how the Python Agents API will handle the new INSTALLMENT and BOOKED statuses for downstream finance and operations syncing.
+
+## Database Schema Changes Required
+
+### 1. Events Table Update
+Add `installment_plan` field to the `events` table:
+```sql
+ALTER TABLE events ADD COLUMN installment_plan VARCHAR(20) DEFAULT '30/40/30';
+```
+
+### 2. Payment Milestones Table
+Ensure the `payment_milestones` table supports both installment plans:
+```sql
+-- Existing structure should support:
+-- - 30/40/30: advance (30%), pre_event (40%), post_event (30%)
+-- - 50/50: advance (50%), pre_event (50%)
+```
+
+## API Endpoint Updates
+
+### 1. Event Creation (`POST /api/finance/events`)
+**Current**: Creates events with default installment plan
+**Update**: Accept `installment_plan` in request body
+
+```python
+# New field in EventCreate schema
+installment_plan: Optional[str] = Field(default="30/40/30", regex="^(30/40/30|50/50)$")
+```
+
+### 2. Payment Milestone Generation
+**Current**: Fixed 30/40/30 structure
+**Update**: Dynamic milestone generation based on plan
+
+```python
+def generate_payment_milestones(event_id: str, total_amount: Decimal, plan: str):
+    if plan == "50/50":
+        return [
+            {"milestone": "advance", "percentage": 50, "amount": total_amount * Decimal("0.5")},
+            {"milestone": "pre_event", "percentage": 50, "amount": total_amount * Decimal("0.5")}
+        ]
+    else:  # 30/40/30 (default)
+        return [
+            {"milestone": "advance", "percentage": 30, "amount": total_amount * Decimal("0.3")},
+            {"milestone": "pre_event", "percentage": 40, "amount": total_amount * Decimal("0.4")},
+            {"milestone": "post_event", "percentage": 30, "amount": total_amount * Decimal("0.3")}
+        ]
+```
+
+## Status Flow Integration
+
+### 1. ENQUIRED Status
+- **Trigger**: User sends first "HI" to WhatsApp bot
+- **Action**: Create basic event record with `status='ENQUIRED'`
+- **Downstream**: Notify sales team of new lead
+
+### 2. BOOKED Status
+- **Trigger**: User selects installment plan and confirms booking
+- **Action**: 
+  - Update event status to `BOOKED`
+  - Generate payment milestones based on selected plan
+  - Trigger WhatsApp payment notifications
+- **Downstream**: 
+  - Finance: Create payment schedule
+  - Operations: Reserve event date
+  - Kitchen: Begin prep planning
+
+## WhatsApp Notification Updates
+
+### 1. Payment Reminders
+Dynamic reminder schedule based on installment plan:
+
+```python
+def get_payment_schedule(installment_plan: str, event_date: datetime):
+    if installment_plan == "50/50":
+        return [
+            {"milestone": "advance", "due_date": datetime.now(), "reminder_days": [0, 3, 7]},
+            {"milestone": "pre_event", "due_date": event_date - timedelta(days=7), "reminder_days": [7, 3, 1]}
+        ]
+    else:  # 30/40/30
+        return [
+            {"milestone": "advance", "due_date": datetime.now(), "reminder_days": [0, 3, 7]},
+            {"milestone": "pre_event", "due_date": event_date - timedelta(days=7), "reminder_days": [7, 3, 1]},
+            {"milestone": "post_event", "due_date": event_date + timedelta(days=7), "reminder_days": [1, 3, 7]}
+        ]
+```
+
+### 2. Status Update Messages
+- **ENQUIRED**: "Welcome! We've received your enquiry. Our team will contact you shortly."
+- **BOOKED**: "Booking confirmed! Payment details sent. Your event is reserved."
+
+## Financial Dashboard Updates
+
+### 1. Installment Plan Filter
+Add filter to finance dashboard by installment plan:
+- Show all events
+- Filter by 30/40/30
+- Filter by 50/50
+
+### 2. Revenue Projection
+Dynamic revenue calculation based on installment plans:
+```python
+def calculate_revenue_projection(events: List[Event], timeframe: str):
+    projected = Decimal("0")
+    for event in events:
+        milestones = generate_payment_milestones(event.id, event.total_amount, event.installment_plan)
+        for milestone in milestones:
+            if is_in_timeframe(milestone.due_date, timeframe):
+                projected += milestone.amount
+    return projected
+```
+
+## Operations Integration
+
+### 1. Event Planning
+- **BOOKED** status triggers:
+  - Kitchen: Menu finalization and prep planning
+  - Decoration: Theme preparation
+  - Staff: Scheduling and allocation
+
+### 2. Resource Allocation
+Different resource planning based on payment status:
+- **Advance paid**: Full resource commitment
+- **Partial payment**: Tentative resource allocation
+
+## Testing Strategy
+
+### 1. Unit Tests
+```python
+def test_installment_plan_generation():
+    # Test 30/40/30 plan
+    milestones_30 = generate_payment_milestones("event1", Decimal("100000"), "30/40/30")
+    assert len(milestones_30) == 3
+    assert milestones_30[0]["percentage"] == 30
+    
+    # Test 50/50 plan
+    milestones_50 = generate_payment_milestones("event2", Decimal("100000"), "50/50")
+    assert len(milestones_50) == 2
+    assert milestones_50[0]["percentage"] == 50
+```
+
+### 2. Integration Tests
+- Test ENQUIRED → BOOKED flow
+- Verify WhatsApp notifications
+- Validate payment milestone creation
+- Test dashboard filtering
+
+## Migration Plan
+
+### Phase 1: Database Schema
+1. Add `installment_plan` column to events table
+2. Backfill existing events with default "30/40/30"
+3. Update constraints and indexes
+
+### Phase 2: API Updates
+1. Update EventCreate schema
+2. Implement dynamic milestone generation
+3. Update WhatsApp notification logic
+
+### Phase 3: Dashboard & Reports
+1. Add installment plan filters
+2. Update revenue projections
+3. Modify payment tracking views
+
+### Phase 4: Testing & Rollout
+1. Comprehensive testing
+2. Staging environment validation
+3. Production deployment with monitoring
+
+## Monitoring & Alerts
+
+### Key Metrics
+- ENQUIRED → BOOKED conversion rate
+- Payment completion rate by installment plan
+- Average time to payment for each milestone
+
+### Alerts
+- High ENQUIRED count (sales team overload)
+- Payment delays by milestone
+- Unusual installment plan selection patterns
+
+## Future Enhancements
+
+### 1. Custom Installment Plans
+- Allow flexible installment structures
+- AI-based plan recommendations
+- Early payment discounts
+
+### 2. Payment Gateway Integration
+- Direct payment processing
+- Automated payment confirmations
+- Failed payment handling
+
+### 3. Advanced Analytics
+- Installment plan performance analysis
+- Customer payment behavior insights
+- Revenue optimization recommendations

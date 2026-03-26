@@ -1,0 +1,34 @@
+tier,category,item_name,price_per_guest
+standard,starter,Veg Spring Rolls,80
+standard,starter,Paneer Tikka,100
+standard,starter,Aloo Tikki Chaat,70
+standard,main_course,Dal Makhani,120
+standard,main_course,Jeera Rice,80
+standard,main_course,Mixed Veg Curry,100
+standard,main_course,Butter Naan,40
+standard,dessert,Gulab Jamun,60
+standard,dessert,Ice Cream,50
+standard,beverage,Soft Drinks,40
+standard,beverage,Masala Chai,30
+premium,starter,Hara Bhara Kebab,130
+premium,starter,Tandoori Mushroom,150
+premium,starter,Dahi Ke Kebab,120
+premium,main_course,Paneer Butter Masala,180
+premium,main_course,Hyderabadi Biryani,200
+premium,main_course,Garlic Naan,60
+premium,main_course,Raita,40
+premium,dessert,Rasmalai,90
+premium,dessert,Phirni,80
+premium,beverage,Fresh Lime Soda,50
+premium,beverage,Masala Chaas,40
+elite,starter,Truffle Mushroom Vol-au-Vent,250
+elite,starter,Saffron Paneer Tikka,220
+elite,starter,Lobster Bisque Shots,350
+elite,main_course,Lobster Thermidor,400
+elite,main_course,Truffle Risotto,300
+elite,main_course,Lamb Shank Rogan Josh,350
+elite,main_course,Artisan Sourdough,100
+elite,dessert,Belgian Chocolate Mousse,200
+elite,dessert,Saffron Crème Brûlée,180
+elite,beverage,Mocktail Bar,150
+elite,beverage,Premium Coffee Station,100

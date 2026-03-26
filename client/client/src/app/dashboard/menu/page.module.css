@@ -1,0 +1,40 @@
+.pageWrap { animation: fadeIn 0.4s ease; padding-bottom: var(--space-8); }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6); }
+.header h1 { font-family: var(--font-headline); font-size: 2rem; margin-bottom: var(--space-1); }
+.subtitle { font-size: 0.9rem; color: var(--on-surface-variant); }
+
+.btnPrimary { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); background: linear-gradient(135deg, var(--primary), var(--primary-container)); color: white; border-radius: var(--radius-lg); font-weight: 600; font-size: 0.875rem; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(31,100,46,0.2); transition: all 0.2s; }
+.btnPrimary:hover { transform: translateY(-1px); }
+
+.tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-8); border-bottom: 1px solid var(--surface-container-high); padding-bottom: var(--space-2); overflow-x: auto; }
+.tab { padding: var(--space-2) var(--space-4); background: transparent; border: none; font-size: 0.9rem; font-weight: 500; color: var(--on-surface-variant); cursor: pointer; border-radius: var(--radius-lg); white-space: nowrap; transition: 0.2s; }
+.tab:hover { background: var(--surface-container-low); color: var(--on-background); }
+.tab.active { background: var(--surface-container-high); color: var(--primary); font-weight: 600; }
+
+.menuGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); }
+
+.menuCard { background: var(--surface-container-lowest); border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-card); display: flex; flex-direction: column; transition: 0.3s; }
+.menuCard:hover { transform: translateY(-3px); box-shadow: var(--shadow-ambient); }
+
+.cardHeader { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); }
+.cardHeader h3 { font-family: var(--font-headline); font-size: 1.3rem; margin-bottom: 2px; }
+.menuType { font-size: 0.8rem; color: var(--outline); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.priceRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5); }
+.price { font-family: var(--font-data); font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+.badge { background: var(--surface-container-high); color: var(--on-surface-variant); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+
+.divider { height: 1px; background: var(--surface-container-high); margin-bottom: var(--space-5); }
+
+.highlights { flex: 1; margin-bottom: var(--space-6); }
+.highlights h4 { font-size: 0.85rem; color: var(--on-background); margin-bottom: var(--space-3); }
+.highlights ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.highlights li { display: flex; align-items: flex-start; gap: var(--space-2); font-size: 0.85rem; color: var(--on-surface-variant); line-height: 1.4; }
+.highlights li .material-symbols-outlined { font-size: 16px; color: var(--primary); margin-top: 2px; }
+
+.btnGhost { width: 100%; padding: var(--space-3); background: transparent; border: 1px solid var(--outline-variant); color: var(--primary); font-weight: 600; font-size: 0.85rem; border-radius: var(--radius-md); cursor: pointer; transition: 0.2s; }
+.btnGhost:hover { background: var(--primary-fixed); border-color: var(--primary); }
+
+@media (max-width: 768px) {
+  .header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+}

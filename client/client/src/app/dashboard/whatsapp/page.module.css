@@ -1,0 +1,36 @@
+.waPage { animation: fadeIn 0.4s ease; }
+.header { margin-bottom: var(--space-8); }
+.header h1 { font-family: var(--font-headline); font-size: 2rem; }
+.subtitle { font-size: 0.9rem; color: var(--on-surface-variant); }
+
+.mainGrid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-8); }
+h3 { font-family: var(--font-headline); font-size: 1.3rem; margin-bottom: var(--space-4); }
+
+.templateGrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+
+.templateCard { background: var(--surface-container-lowest); border-radius: var(--radius-xl); padding: var(--space-5); box-shadow: var(--shadow-card); display: flex; flex-direction: column; transition: all 0.2s; }
+.templateCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-ambient); border-color: var(--primary-fixed); }
+
+.tplHeader { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+.tplHeader h4 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; }
+.tplHeader .material-symbols-outlined { color: var(--primary); font-size: 20px; }
+
+.templateCard p { font-size: 0.8rem; color: var(--on-surface-variant); margin-bottom: var(--space-4); flex: 1; }
+
+.btnGhost { align-self: flex-start; padding: var(--space-2) var(--space-4); color: var(--primary); font-size: 0.8rem; font-weight: 600; border: 1px solid var(--outline-variant); border-radius: var(--radius-md); background: transparent; cursor: pointer; transition: all 0.2s; }
+.btnGhost:hover { background: var(--primary-fixed); border-color: var(--primary); }
+
+.composerCard { background: var(--surface-container-lowest); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); overflow: hidden; display: flex; flex-direction: column; }
+.composerTools { padding: var(--space-3) var(--space-4); background: var(--surface-container-low); border-bottom: 1px solid var(--outline-variant); }
+.toolBtn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-weight: 600; color: var(--primary); background: rgba(31, 100, 46, 0.1); padding: 4px 10px; border-radius: var(--radius-full); cursor: pointer; border: none; }
+.toolBtn .material-symbols-outlined { font-size: 16px; }
+
+.editor { padding: var(--space-6); min-height: 300px; font-size: 0.95rem; line-height: 1.6; color: var(--on-background); font-family: var(--font-body); }
+.editor strong { color: var(--primary); background: var(--tertiary-fixed); padding: 0 4px; border-radius: 4px; font-family: var(--font-data); font-size: 0.85rem; font-weight: 500;}
+
+.composerFooter { padding: var(--space-4); display: flex; justify-content: flex-end; gap: var(--space-3); border-top: 1px solid var(--outline-variant); }
+.btnOutline { padding: var(--space-3) var(--space-5); background: transparent; border: 1px solid var(--outline-variant); border-radius: var(--radius-lg); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.btnPrimary { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); background: linear-gradient(135deg, #25D366, #128C7E); color: white; border: none; border-radius: var(--radius-lg); font-weight: 600; font-size: 0.85rem; cursor: pointer; box-shadow: 0 4px 12px rgba(37,211,102,0.2); }
+
+@media (max-width: 1024px) { .mainGrid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .templateGrid { grid-template-columns: 1fr; } }
